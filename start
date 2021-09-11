@@ -88,7 +88,7 @@ if [ "${OS}" == "Android" ]; then
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-        git https://github.com/ploxem/hackentos/tool
+        git https://github.com/ploxem/hackentos
         mv tool hackentos
         cd ${RUTA}/hackentos
         mkdir tools
@@ -107,7 +107,7 @@ else
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-        git https://github.com/ploxem/hackentos/tool
+        git https://github.com/ploxem/hackentos
         mv tool hackentos
         cd ${RUTA}/hackentos
         mkdir tools
