@@ -229,7 +229,12 @@ echo -e "${verde1}
 |_______________________|
                           "${verde1}
 git clone https://github.com/Anonymous-Zpt/T-banner4
-cd ${RUTA}/T-banner4
+rm ${RUTA}/T-banner4/T-banner
+mv ${RUTA}/hackentos/util/t-banner/T-banner ${RUTA}/T-banner4
+rm -r ${RUTA}/hackentos/util/t-banner
+mv T-banner4 t-banner
+mv ${RUTA}/t-banner ${RUTA}/hackentos/tools
+cd ${RUTA}/hackentos/tools/t-banner
 chmod +x *
 cd ${RUTA}
 Finalizado
@@ -315,11 +320,20 @@ exit
 elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
 exit
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
-exit
+clear
+cd ${RUTA}/hackentos/tools/seeker
+python3 seeker.py -t manual
+cd ${RUTA}
 elif [[ ${OPTION} == 4 || ${OPTION} == 04 ]]; then
-exit
+clear
+cd ${RUTA}/hackentos/tools/setsms
+./setsms.sh
+cd ${RUTA}
 elif [[ ${OPTION} == 5 || ${OPTION} == 05 ]]; then
-exit
+clear
+cd ${RUTA}/hackentos/tools/t-banner
+./T-banner
+cd ${RUTA}
 else
 Error
 clear
