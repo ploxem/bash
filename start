@@ -88,7 +88,7 @@ if [ "${OS}" == "Android" ]; then
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-        git https://github.com/ploxem/hackentos
+        git clone https://github.com/ploxem/hackentos
 		pkg update && pkg upgrade -y
 		pkg install python -y
 	fi
@@ -103,7 +103,7 @@ else
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-        git https://github.com/ploxem/hackentos
+        git clone https://github.com/ploxem/hackentos
 		apt-get update && apt-get upgrade -y
 		apt-get install python3 -y
 	fi
