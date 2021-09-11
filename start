@@ -89,10 +89,6 @@ if [ "${OS}" == "Android" ]; then
 |_______________________|
                           "${verde1}
         git https://github.com/ploxem/hackentos
-        mv tool hackentos
-        cd ${RUTA}/hackentos
-        mkdir tools
-        cd ${RUTA}
 		pkg update && pkg upgrade -y
 		pkg install python -y
 	fi
@@ -108,10 +104,6 @@ else
 |_______________________|
                           "${verde1}
         git https://github.com/ploxem/hackentos
-        mv tool hackentos
-        cd ${RUTA}/hackentos
-        mkdir tools
-        cd ${RUTA}
 		apt-get update && apt-get upgrade -y
 		apt-get install python3 -y
 	fi
