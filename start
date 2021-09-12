@@ -29,7 +29,7 @@ Choose
 }
 
 #---------------------------------------------------------------------------------------------------
-# ACTUALIZAR
+# ACTUALIZAR (falta linux)
 function Update {
 clear
 echo -e "${verde1}
@@ -39,9 +39,18 @@ echo -e "${verde1}
 |_______________________|
                           "${verde1}
 apt update && apt upgrade -y
+Updatestart
 apt-get autoremove -y
 Finalizado
 }
+
+#---------------------------------------------------------------------------------------------------
+# ACTUALIZAR START DE HACKENTOS
+function Updatestart {
+rm ${RUTA}/start
+wget https://raw.githubusercontent.com/ploxem/bash/main/start
+chmod +x ${RUTA}/start
+} &> /dev/null
 
 #---------------------------------------------------------------------------------------------------
 # FINALIZADO
@@ -74,7 +83,7 @@ exit
 }
 
 #---------------------------------------------------------------------------------------------------
-# INSTALAR - HACKENTOS
+# INSTALAR - HACKENTOS (falta linux - comprobar si es root)
 function Installhackentos {
 clear
 if [ "${OS}" == "Android" ]; then
@@ -117,7 +126,7 @@ fi
 }
 
 #---------------------------------------------------------------------------------------------------
-# INSTALAR - REQUISITOS
+# INSTALAR - REQUISITOS (falta linux)
 function Instalarrequisitos {
 clear
 echo -e "${verde1}
@@ -133,7 +142,7 @@ Finalizado
 }
 
 #---------------------------------------------------------------------------------------------------
-# INSTALAR - METASPLOIT
+# INSTALAR - METASPLOIT (falta linux)
 function Instalarmetasploit {
 clear
 echo -e "${verde1}
@@ -155,7 +164,7 @@ Finalizado
 }
 
 #---------------------------------------------------------------------------------------------------
-# INSTALAR - NGROK
+# INSTALAR - NGROK (falta linux)
 function Instalarngrok {
 clear
 echo -e "${verde1}
@@ -175,7 +184,7 @@ Finalizado
 }
 
 #---------------------------------------------------------------------------------------------------
-# INSTALAR - SEEKER
+# INSTALAR - SEEKER (falta linux)
 function Instalarseeker {
 clear
 echo -e "${verde1}
@@ -219,7 +228,7 @@ Finalizado
 }
 
  #---------------------------------------------------------------------------------------------------
-# INSTALAR - TBANNER
+# INSTALAR - TBANNER (falta linux)
 function Instalartbanner {
 clear
 echo -e "${verde1}
@@ -283,7 +292,7 @@ fi
 }
 
 #---------------------------------------------------------------------------------------------------
-# MENÚ HERRAMIENTAS
+# MENÚ HERRAMIENTAS (falta linux)
 function Tools {
 clear
 echo -e -n  "${rojo}
@@ -342,7 +351,7 @@ fi
 }
 
 #---------------------------------------------------------------------------------------------------
-# MENÚ INSTALAR
+# MENÚ INSTALAR (falta linux)
 function Install {
 clear
 echo -e -n  "${rojo}
