@@ -254,7 +254,7 @@ Finalizado
 function Choose {
 #sleep 0.3
 echo -e -n  "${rojo}
-                H A C K E N T O X  ${verde1}
+                H A C K E N T O S  ${verde1}
             ┌═══════════════════════┐
             █ ${blanco}SELECCIONE UNA OPCIÓN ${verde}█
             └═══════════════════════┘
