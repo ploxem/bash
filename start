@@ -256,7 +256,7 @@ function Choose {
 echo -e -n  "${rojo}
                 H A C K E N T O S ${verde1}
             ┌═══════════════════════┐
-            █ ${blanco}SELECCIONE UNA OPCIÓN ${verde}█
+            █ ${blanco}SELECCIONE UNA OPCIÓ ${verde}█
             └═══════════════════════┘
 ┌═════════════════════════════════════════════┐
 █ [${blanco}01${verde}] ┃ ${blanco}          HERRAMIENTAS               ${verde}█
