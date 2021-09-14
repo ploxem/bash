@@ -282,7 +282,8 @@ elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
 Tools
 elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
 Update
-Restart
+clear
+./start
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
 Install
 else
