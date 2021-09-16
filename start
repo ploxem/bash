@@ -328,7 +328,7 @@ Restart
 elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
 exit
 elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
-exit
+Menungrok
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/seeker
@@ -411,6 +411,54 @@ clear
 Install
 fi
 }
+
+#---------------------------------------------------------------------------------------------------
+# MENÚ NGROK (falta linux)
+function Menungrok {
+clear
+echo -e -n  "${rojo}
+                    N G R O K  ${verde1}
+            ┌═══════════════════════┐
+            █ ${blanco}SELECCIONE UNA OPCIÓN ${verde}█
+            └═══════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}01${verde}] ┃ ${blanco}            HTTP 8080                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}02${verde}] ┃ ${blanco}            TCP 4444                 ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}03${verde}] ┃ ${blanco}              SHELL                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}00${verde}] ┃ ${rojo}             VOLVER                  ${verde}█
+└═════════════════════════════════════════════┘
+
+>>> "${blanco}
+
+read -r OPTION
+#sleep 0.5
+
+if [[ ${OPTION} == 0 || ${OPTION} == 00 ]]; then
+Tools
+elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
+ngrok http 8080
+elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
+ngrok tcp 4444
+elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
+clear
+echo -e -n  "${rojo}
+                    N G R O K  ${verde1}
+
+ngrok >>> "${blanco}
+read -r OPTION
+else
+Error
+clear
+Menungrok
+fi
+}
+
 #---------------------------------------------------------------------------------------------------
 # CARGAR INICIO
 Installhackentos
