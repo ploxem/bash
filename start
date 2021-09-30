@@ -36,7 +36,7 @@ clear
 echo -e "${verde1}
  _______________________
 |                       |
-| ACTUALIZANDO PAQUETES |
+|      ACTUALIZANDO     |
 |_______________________|
                           "${verde1}
 apt update && apt upgrade -y
@@ -92,15 +92,33 @@ if [ "${OS}" == "Android" ]; then
 		RUTA=$(pwd)
 	else
 		RUTA=$(pwd)
-        echo -e "${verde1}
+echo -e "${verde1}
+ _______________________
+|                       |
+| ACTUALIZANDO PAQUETES |
+|_______________________|
+                          "${verde1}
+		pkg update && pkg upgrade -y
+echo -e "${verde1}
+ _______________________
+|                       |
+|   INSTALANDO PYTHON   |
+|_______________________|
+                          "${verde1}
+		pkg install python -y
+echo -e "${verde1}
+ _______________________
+|                       |
+|     INSTALANDO GIT    |
+|_______________________|
+                          "${verde1}
+		pkg install git -y
+echo -e "${verde1}
  _______________________
 |                       |
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-		pkg update && pkg upgrade -y
-		pkg install python -y
-		pkg install git -y
         git clone https://github.com/ploxem/hackentos
         cd ${RUTA}/hackentos
         mkdir tools
