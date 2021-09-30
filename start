@@ -473,7 +473,7 @@ echo -e -n  "${rojo}
 
 ${verde1}ngrok >>>"${blanco}
 read -p ' '
-ngrok ${REPLY}
+ngrok ${REPLY} && clear
 elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
 ngrok http 8080
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
