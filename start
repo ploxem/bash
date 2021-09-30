@@ -1,0 +1,466 @@
+#!/bin/bash
+# Variables y Colores
+PWD=$(pwd)
+verde='\033[32m'
+verde1='\033[1;32m'
+blanco='\033[37m'
+rojo='\033[31m'
+azul='\033[34m'
+negro='\033[0;30m'
+rosa='\033[38;5;207m'
+amarillo='\033[33m'
+morado='\033[35m'
+cian='\033[1;36m'
+magenta='\033[1;35m'
+
+#---------------------------------------------------------------------------------------------------
+# BANNER
+function Banner {
+clear
+python3 ${RUTA}/hackentos/util/banner/Banner
+}
+
+#---------------------------------------------------------------------------------------------------
+# RECARGAR MENÚ PRINCIPAL
+function Restart {
+clear
+python3 ${RUTA}/hackentos/util/banner/Banner2
+Choose
+}
+
+#---------------------------------------------------------------------------------------------------
+# ACTUALIZAR (falta linux)
+function Update {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+| ACTUALIZANDO PAQUETES |
+|_______________________|
+                          "${verde1}
+apt update && apt upgrade -y
+Updatestart
+apt-get autoremove -y
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# ACTUALIZAR START DE HACKENTOS
+function Updatestart {
+rm ${RUTA}/start
+wget https://raw.githubusercontent.com/ploxem/bash/main/start
+chmod +x ${RUTA}/start
+} &> /dev/null
+
+#---------------------------------------------------------------------------------------------------
+# FINALIZADO
+function Finalizado {
+echo -e "${verde1}
+ _______________________
+|                       |
+|      FINALIZADO       |
+|_______________________|
+                          "${verde1}
+sleep 2.0
+}
+
+#---------------------------------------------------------------------------------------------------
+# ERROR
+function Error {
+echo -e "${rojo}
+┌═════════════════════┐
+█ ${blanco}¡OPCIÓN INCORRECTA! ${rojo}█
+└═════════════════════┘
+"${blanco}
+sleep 0.5
+}
+
+#---------------------------------------------------------------------------------------------------
+# SALIR
+function Salir {
+clear
+exit
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - HACKENTOS (falta linux - comprobar si es root)
+function Installhackentos {
+clear
+if [ "${OS}" == "Android" ]; then
+    if [ -x ${PWD}/hackentos ]; then
+		RUTA=$(pwd)
+	else
+		RUTA=$(pwd)
+        echo -e "${verde1}
+ _______________________
+|                       |
+| INSTALANDO HACKENTOS  |
+|_______________________|
+                          "${verde1}
+        git clone https://github.com/ploxem/hackentos
+        cd ${RUTA}/hackentos
+        mkdir tools
+        cd ${RUTA}
+		pkg update && pkg upgrade -y
+		pkg install python -y
+	fi
+else
+    if [ -x ${PWD}/hackentos ]; then
+		RUTA=$(pwd)
+	else
+		RUTA=$(pwd)
+        echo -e "${verde1}
+ _______________________
+|                       |
+| INSTALANDO HACKENTOS  |
+|_______________________|
+                          "${verde1}
+        git clone https://github.com/ploxem/hackentos
+        cd ${RUTA}/hackentos
+        mkdir tools
+        cd ${RUTA}
+		apt-get update && apt-get upgrade -y
+		apt-get install python3 -y
+	fi
+fi
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - REQUISITOS (falta linux)
+function Instalarrequisitos {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+| INSTALANDO REQUISITOS |
+|_______________________|
+                          "${verde1}
+pkg install unstable-repo
+apt install cmatrix htop util-linux python python2 ruby vim coreutils perl clang curl wget make openssl php zip unzip tar htop bison findutils git apr-util libtool pkg-config tmux termux-tools ncurses-utils ncurses postgresql termux-elf-cleaner openssl-tool -y
+pip install lolcat
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - METASPLOIT (falta linux)
+function Instalarmetasploit {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+| INSTALANDO METASPLOIT |
+|_______________________|
+                          "${verde1}
+wget https://raw.githubusercontent.com/gushmazuko/metasploit_in_termux/master/metasploit.sh
+chmod +x metasploit.sh
+./metasploit.sh
+./postgresql_ctl.sh start
+pg_ctl -D /data/data/com.termux/files/usr/var/lib/postgresql -l logfile start
+rm metasploit.sh
+mv ./postgresql_ctl.sh metasploit-framework
+mv logfile metasploit-framework
+mv metasploit-framework ${RUTA}/hackentos/tools
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - NGROK (falta linux)
+function Instalarngrok {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+|   INSTALANDO NGROK    |
+|_______________________|
+                          "${verde1}
+git clone https://github.com/TermuxHacking000/NgrokTH
+cd ${RUTA}/NgrokTH
+chmod +x *
+./ngrok.sh
+cd ${RUTA}
+mv NgrokTH ngrok
+mv ngrok ${RUTA}/hackentos/tools
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - SEEKER (falta linux)
+function Instalarseeker {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+|   INSTALANDO SEEKER   |
+|_______________________|
+                          "${verde1}
+git clone https://github.com/thewhiteh4t/seeker.git
+cd ${RUTA}/seeker
+chmod +x termux_install.sh
+./termux_install.sh
+rm seeker.py
+rm -r ${RUTA}/seeker/template/gdrive
+cd ${RUTA}
+mv seeker ${RUTA}/hackentos/tools
+mv ${RUTA}/hackentos/util/seeker/seeker.py ${RUTA}/hackentos/tools/seeker
+mv ${RUTA}/hackentos/util/seeker/gdrive ${RUTA}/hackentos/tools/seeker/template
+rm -r ${RUTA}/hackentos/util/seeker
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# INSTALAR - SETSMS
+function Instalarsetsms {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+|   INSTALANDO SETSMS   |
+|_______________________|
+                          "${verde1}
+git clone https://github.com/Darkmux/SETSMS
+mv SETSMS setsms
+cd ${RUTA}/setsms
+mv SETSMS.sh setsms.sh
+chmod +x *
+cd ${RUTA}
+mv ${RUTA}/setsms ${RUTA}/hackentos/tools
+Finalizado
+}
+
+ #---------------------------------------------------------------------------------------------------
+# INSTALAR - TBANNER (falta linux)
+function Instalartbanner {
+clear
+echo -e "${verde1}
+ _______________________
+|                       |
+|  INSTALANDO T-BANNER  |
+|_______________________|
+                          "${verde1}
+git clone https://github.com/Anonymous-Zpt/T-banner4
+rm ${RUTA}/T-banner4/T-banner
+mv ${RUTA}/hackentos/util/t-banner/T-banner ${RUTA}/T-banner4
+rm -r ${RUTA}/hackentos/util/t-banner
+mv T-banner4 t-banner
+mv ${RUTA}/t-banner ${RUTA}/hackentos/tools
+cd ${RUTA}/hackentos/tools/t-banner
+chmod +x *
+cd ${RUTA}
+Finalizado
+}
+
+#---------------------------------------------------------------------------------------------------
+# MENÚ PRINCIPAL
+function Choose {
+#sleep 0.3
+echo -e -n  "${rojo}
+                H A C K E N T O S  ${verde1}
+            ┌═══════════════════════┐
+            █ ${blanco}SELECCIONE UNA OPCIÓN ${verde}█
+            └═══════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}01${verde}] ┃ ${blanco}          HERRAMIENTAS               ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}02${verde}] ┃ ${blanco}           ACTUALIZAR                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}03${verde}] ┃ ${blanco}            INSTALAR                 ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}00${verde}] ┃ ${rojo}             SALIR                   ${verde}█
+└═════════════════════════════════════════════┘
+
+>>> "${blanco}
+
+read -r OPTION
+#sleep 0.5
+
+if [[ ${OPTION} == 0 || ${OPTION} == 00 ]]; then
+Salir
+elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
+Tools
+elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
+Update
+clear
+./start
+elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
+Install
+else
+Error
+Restart
+fi
+}
+
+#---------------------------------------------------------------------------------------------------
+# MENÚ HERRAMIENTAS (falta linux)
+function Tools {
+clear
+echo -e -n  "${rojo}
+              H E R R A M I E N T A S ${verde1}
+
+┌═════════════════════════════════════════════┐
+█ [${blanco}01${verde}] ┃ ${blanco}           METASPLOIT                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}02${verde}] ┃ ${blanco}             NGROK                   ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}03${verde}] ┃ ${blanco}             SEEKER                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}04${verde}] ┃ ${blanco}             SETSMS                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}05${verde}] ┃ ${blanco}            T-BANNER                 ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}00${verde}] ┃ ${rojo}             VOLVER                  ${verde}█
+└═════════════════════════════════════════════┘
+
+>>> "${blanco}
+
+read -r OPTION
+#sleep 0.5
+
+if [[ ${OPTION} == 0 || ${OPTION} == 00 ]]; then
+Restart
+elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
+exit
+elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
+Menungrok
+elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
+clear
+cd ${RUTA}/hackentos/tools/seeker
+python3 seeker.py -t manual
+cd ${RUTA}
+elif [[ ${OPTION} == 4 || ${OPTION} == 04 ]]; then
+clear
+cd ${RUTA}/hackentos/tools/setsms
+./setsms.sh
+cd ${RUTA}
+elif [[ ${OPTION} == 5 || ${OPTION} == 05 ]]; then
+clear
+cd ${RUTA}/hackentos/tools/t-banner
+./T-banner
+cd ${RUTA}
+else
+Error
+clear
+Tools
+fi
+}
+
+#---------------------------------------------------------------------------------------------------
+# MENÚ INSTALAR (falta linux)
+function Install {
+clear
+echo -e -n  "${rojo}
+                 I N S T A L A R ${verde1}
+
+┌═════════════════════════════════════════════┐
+█ [${blanco}01${verde}] ┃ ${blanco}           REQUISITOS                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}02${verde}] ┃ ${blanco}           METASPLOIT                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}03${verde}] ┃ ${blanco}             NGROK                   ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}04${verde}] ┃ ${blanco}             SEEKER                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}05${verde}] ┃ ${blanco}             SETSMS                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}06${verde}] ┃ ${blanco}            T-BANNER                 ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}00${verde}] ┃ ${rojo}             VOLVER                  ${verde}█
+└═════════════════════════════════════════════┘
+
+>>> "${blanco}
+
+read -r OPTION
+#sleep 0.5
+
+if [[ ${OPTION} == 0 || ${OPTION} == 00 ]]; then
+Restart
+elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
+Instalarrequisitos
+Install
+elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
+Instalarmetasploit
+Install
+elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
+Instalarngrok
+Install
+elif [[ ${OPTION} == 4 || ${OPTION} == 04 ]]; then
+Instalarseeker
+Install
+elif [[ ${OPTION} == 5 || ${OPTION} == 05 ]]; then
+Instalarsetsms
+Install
+elif [[ ${OPTION} == 6 || ${OPTION} == 06 ]]; then
+Instalartbanner
+Install
+else
+Error
+clear
+Install
+fi
+}
+
+#---------------------------------------------------------------------------------------------------
+# MENÚ NGROK (falta linux)
+function Menungrok {
+clear
+echo -e -n  "${rojo}
+                    N G R O K  ${verde1}
+            ┌═══════════════════════┐
+            █ ${blanco}SELECCIONE UNA OPCIÓN ${verde}█
+            └═══════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}01${verde}] ┃ ${blanco}            HTTP 8080                ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}02${verde}] ┃ ${blanco}            TCP 4444                 ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}03${verde}] ┃ ${blanco}              SHELL                  ${verde}█
+└═════════════════════════════════════════════┘
+┌═════════════════════════════════════════════┐
+█ [${blanco}00${verde}] ┃ ${rojo}             VOLVER                  ${verde}█
+└═════════════════════════════════════════════┘
+
+>>> "${blanco}
+
+read -r OPTION
+#sleep 0.5
+
+if [[ ${OPTION} == 0 || ${OPTION} == 00 ]]; then
+Tools
+elif [[ ${OPTION} == 1 || ${OPTION} == 01 ]]; then
+ngrok http 8080
+elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
+ngrok tcp 4444
+elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
+clear
+echo -e -n  "${rojo}
+                    N G R O K  ${verde1}
+
+ngrok >>> "${blanco}
+read -r OPTION
+else
+Error
+clear
+Menungrok
+fi
+}
+
+#---------------------------------------------------------------------------------------------------
+# CARGAR INICIO
+Installhackentos
+Banner
+Choose
