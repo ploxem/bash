@@ -39,7 +39,8 @@ echo -e "${verde1}
 |      ACTUALIZANDO     |
 |_______________________|
                           "${verde1}
-apt update && apt upgrade -y
+apt update -y 
+apt upgrade -y
 Updatestart
 apt-get autoremove -y
 Finalizado
@@ -98,7 +99,8 @@ echo -e "${verde1}
 | ACTUALIZANDO PAQUETES |
 |_______________________|
                           "${verde1}
-		pkg update && pkg upgrade -y
+		pkg update -y
+		pkg upgrade -y
 echo -e "${verde1}
  _______________________
 |                       |
@@ -135,7 +137,8 @@ else
 | INSTALANDO HACKENTOS  |
 |_______________________|
                           "${verde1}
-		apt-get update && apt-get upgrade -y
+		apt-get update -y
+		apt-get upgrade -y
 		apt-get install python3 -y
 		apt-get install git -y
         git clone https://github.com/ploxem/hackentos
@@ -156,7 +159,7 @@ echo -e "${verde1}
 | INSTALANDO REQUISITOS |
 |_______________________|
                           "${verde1}
-pkg install unstable-repo
+pkg install unstable-repo -y
 apt install cmatrix htop util-linux python python2 ruby vim coreutils perl clang curl wget make openssl php zip unzip tar htop bison findutils git apr-util libtool pkg-config tmux termux-tools ncurses-utils ncurses postgresql termux-elf-cleaner openssl-tool -y
 pip install lolcat
 Finalizado
