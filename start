@@ -98,8 +98,8 @@ if [ "${OS}" == "Android" ]; then
 |_______________________|
                           "${verde1}
   	pkg update && pkg upgrade -y
-   pkg install git -y
-		pkg install python -y
+        pkg install git -y
+        pkg install python -y
         git clone https://github.com/ploxem/hackentos
         cd ${RUTA}/hackentos
         mkdir tools
