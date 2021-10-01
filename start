@@ -356,18 +356,18 @@ Menungrok
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/seeker
-python3 seeker.py -t manual && ./start
+python3 seeker.py -t manual
 cd ${RUTA}
 elif [[ ${OPTION} == 4 || ${OPTION} == 04 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/setsms
-./setsms.sh && ./start
-cd ${RUTA}
+./setsms.sh
+cd ${RUTA} && ./start
 elif [[ ${OPTION} == 5 || ${OPTION} == 05 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/t-banner
-./T-banner && ./start
-cd ${RUTA}
+./T-banner
+cd ${RUTA} && ./start
 else
 Error
 clear
