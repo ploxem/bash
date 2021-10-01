@@ -18,7 +18,7 @@ magenta='\033[1;35m'
 # BANNER
 function Banner {
 clear
-python3 ${RUTA}/hackentos/util/banner/Banner
+python3 ${RUTA}/hackentos/util/banner/Banner2
 }
 
 #---------------------------------------------------------------------------------------------------
@@ -356,17 +356,17 @@ Menungrok
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/seeker
-python3 seeker.py -t manual
+python3 seeker.py -t manual && ./start
 cd ${RUTA}
 elif [[ ${OPTION} == 4 || ${OPTION} == 04 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/setsms
-./setsms.sh
+./setsms.sh && ./start
 cd ${RUTA}
 elif [[ ${OPTION} == 5 || ${OPTION} == 05 ]]; then
 clear
 cd ${RUTA}/hackentos/tools/t-banner
-./T-banner
+./T-banner && ./start
 cd ${RUTA}
 else
 Error
@@ -473,11 +473,11 @@ echo -e -n  "${rojo}
 
 ${verde1}ngrok >>>"${blanco}
 read -p ' '
-ngrok ${REPLY} && clear
+ngrok ${REPLY} && ./start
 elif [[ ${OPTION} == 2 || ${OPTION} == 02 ]]; then
-ngrok http 8080
+ngrok http 8080 && ./start 
 elif [[ ${OPTION} == 3 || ${OPTION} == 03 ]]; then
-ngrok tcp 4444
+ngrok tcp 4444 && ./start 
 else
 Error
 clear
